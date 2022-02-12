@@ -3,8 +3,16 @@ module github.com/bekzod003/chat-api-gateway
 go 1.17
 
 require (
+	github.com/gofiber/fiber/v2 v2.26.0
 	github.com/joho/godotenv v1.4.0
 	github.com/sirupsen/logrus v1.8.1
 )
 
-require golang.org/x/sys v0.0.0-20191026070338-33540a1f6037 // indirect
+require (
+	github.com/andybalholm/brotli v1.0.4 // indirect
+	github.com/klauspost/compress v1.14.2 // indirect
+	github.com/valyala/bytebufferpool v1.0.0 // indirect
+	github.com/valyala/fasthttp v1.33.0 // indirect
+	github.com/valyala/tcplisten v1.0.0 // indirect
+	golang.org/x/sys v0.0.0-20220209214540-3681064d5158 // indirect
+)

@@ -1,3 +1,5 @@
+.SILENT:
+
 CURRENT_DIR=$(shell pwd)
 
 APP=$(shell basename ${CURRENT_DIR})
@@ -14,7 +16,7 @@ update-proto-module:
 
 copy-proto-module:
 	rm -rf ${CURRENT_DIR}/protos
-	rsync -rv --exclude=.git ${CURRENT_DIR}/upm_protos/* ${CURRENT_DIR}/protos
+	rsync -rv --exclude=.git ${CURRENT_DIR}/chat-protos/* ${CURRENT_DIR}/protos
 
 gen-proto-module:
 	./scripts/gen_proto.sh ${CURRENT_DIR}

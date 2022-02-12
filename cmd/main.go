@@ -7,6 +7,6 @@ import (
 )
 
 func main() {
-	fmt.Println("niga")
-	api.Niga()
+	fmt.Println("man")
+	api.Some()
 }

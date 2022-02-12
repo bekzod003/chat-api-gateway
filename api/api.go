@@ -2,6 +2,6 @@ package api
 
 import "fmt"
 
-func Niga() {
+func Some() {
 	fmt.Println("im here")
 }

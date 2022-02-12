@@ -1,0 +1,3 @@
+[submodule "chat-protos"]
+	path = chat-protos
+	url = https://github.com/bekzod003/chat-protos

@@ -17,17 +17,17 @@ func (h *Handler) SignUp(c *fiber.Ctx) error {
 		return err
 	}
 
-	// res, err := h.services.AuthService().SignUp(
-	// 	c.Context(),
-	// 	&req,
-	// )
-	// if err != nil {
-	// 	logrus.Error("Grpc error in auth service --->>> ", err)
-	// 	c.JSON(err)
-	// 	return err
-	// }
+	res, err := h.services.AuthService().SignUp(
+		c.Context(),
+		req,
+	)
+	if err != nil {
+		logrus.Error("Grpc error in auth service --->>> ", err)
+		c.JSON(err)
+		return err
+	}
 
-	return h.handleResponse(c, http.StatusCreated, req)
+	return h.handleResponse(c, http.StatusCreated, res)
 }
 
 func (h *Handler) SignIn(c *fiber.Ctx) error {

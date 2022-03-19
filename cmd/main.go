@@ -25,7 +25,8 @@ func main() {
 		},
 	)
 
-	h := handlers.NewHandler(cfg, logrus.Logger{}, grpcServices)
+	logger := logrus.New()
+	h := handlers.NewHandler(cfg, *logger, grpcServices)
 	api.SetUpApi(r, h, cfg)
 
 	r.Listen(cfg.Port)

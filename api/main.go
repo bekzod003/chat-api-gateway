@@ -8,18 +8,12 @@ import (
 )
 
 func SetUpApi(r *fiber.App, h *handlers.Handler, cfg config.Config) {
-	println("Api is being set up")
+	logrus.Info("Api is being set up")
 	r.Get("/ping", h.Test)
 
 	auth := r.Group("/auth")
-	auth.Use(func(c *fiber.Ctx) error {
-		logrus.Info("middleware")
-		return c.Next()
-	})
 	{
-		auth.Post("/sing-up", h.SignUp)
-		auth.Post("/sing-in", h.SignIn)
+		auth.Post("/sign-up", h.SignUp)
+		auth.Post("/sign-in", h.SignIn)
 	}
-	// r.Post("/auth/sign-up", h.Test)
-
 }

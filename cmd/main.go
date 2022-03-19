@@ -1,9 +1,11 @@
 package main
 
 import (
+	"github.com/bekzod003/chat-api-gateway/api"
 	"github.com/bekzod003/chat-api-gateway/api/handlers"
 	"github.com/bekzod003/chat-api-gateway/config"
 	"github.com/bekzod003/chat-api-gateway/services"
+	"github.com/gofiber/fiber/v2"
 	"github.com/sirupsen/logrus"
 )
 
@@ -17,8 +19,14 @@ func main() {
 		logrus.Error("error while creating new grpc clients: ", err)
 	}
 
-	handler := handlers.NewHandler(cfg, *logrus.New(), grpcServices)
-	app := handler.InitRoutes()
+	r := fiber.New(
+		fiber.Config{
+			AppName: cfg.ServiceName,
+		},
+	)
 
-	app.Listen(cfg.Port)
+	h := handlers.NewHandler(cfg, logrus.Logger{}, grpcServices)
+	api.SetUpApi(r, h, cfg)
+
+	r.Listen(cfg.Port)
 }
